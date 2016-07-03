@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="70b953a4-a237-4c82-bbf1-d81aaa2ea221" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/wx_express.php" afterPath="$PROJECT_DIR$/api/wx_express.php" />
     </list>
     <ignored path="sneaker.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,24 +50,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wx_express.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="wx_express.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/wx_express.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.5">
+            <state vertical-scroll-proportion="0.17061612">
               <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
               <folding>
                 <marker date="1467546614000" expanded="true" signature="486:680" placeholder="select a.id ..db_province_express..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.023734177">
-              <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -151,8 +140,8 @@
         <option value="$PROJECT_DIR$/api/wx_customer.php" />
         <option value="$PROJECT_DIR$/conf/route.php" />
         <option value="$PROJECT_DIR$/api/wx_express.php" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -343,12 +332,12 @@
       <workItem from="1467036602057" duration="15617000" />
       <workItem from="1467290698033" duration="9228000" />
       <workItem from="1467383696019" duration="16441000" />
-      <workItem from="1467524744319" duration="7901000" />
+      <workItem from="1467524744319" duration="8509000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49509000" />
+    <option name="totallyTimeSpent" value="50117000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -741,29 +730,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/wx_express.php">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.5">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <marker date="1467546614000" expanded="true" signature="486:680" placeholder="select a.id ..db_province_express..." />
-          </folding>
+        <state vertical-scroll-proportion="0.023734177">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="-16.146118">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/api/wx_express.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.023734177">
-          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
-          <folding />
+        <state vertical-scroll-proportion="0.17061612">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <marker date="1467546614000" expanded="true" signature="486:680" placeholder="select a.id ..db_province_express..." />
+          </folding>
         </state>
       </provider>
     </entry>
