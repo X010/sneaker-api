@@ -63,7 +63,7 @@ function wx_express($action, $id = Null)
                     if ($weight_total <= 1000) {
                         $res['express_price'] = $res['first_price'];
                     } else {
-                        $res['express_price']=((float)($weight_total-1000))/1000*$res['continue_price'];
+                        $res['express_price']=((float)($weight_total-1000))/1000*$res['continue_price']+ $res['first_price'];
                     }
 
                 }

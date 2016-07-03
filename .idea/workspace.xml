@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70b953a4-a237-4c82-bbf1-d81aaa2ea221" name="Default" comment="" />
+    <list default="true" id="70b953a4-a237-4c82-bbf1-d81aaa2ea221" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/api/wx_express.php" afterPath="$PROJECT_DIR$/api/wx_express.php" />
+    </list>
     <ignored path="sneaker.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -25,7 +29,7 @@
       <file leaf-file-name="wx_customer.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/wx_customer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-325.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="1918" column="55" selection-start-line="1918" selection-start-column="7" selection-end-line="1918" selection-end-column="55" />
               <folding>
                 <element signature="e#6#197#0#PHP" expanded="true" />
@@ -45,7 +49,7 @@
       <file leaf-file-name="wx_pay.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/wx_pay.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.96153843">
+            <state vertical-scroll-proportion="0.0">
               <caret line="90" column="21" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
               <folding />
             </state>
@@ -55,7 +59,7 @@
       <file leaf-file-name="env.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/env.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.264151">
+            <state vertical-scroll-proportion="0.0">
               <caret line="146" column="6" selection-start-line="146" selection-start-column="6" selection-end-line="146" selection-end-column="6" />
               <folding />
             </state>
@@ -65,7 +69,7 @@
       <file leaf-file-name="route.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/route.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.230769">
+            <state vertical-scroll-proportion="0.0">
               <caret line="296" column="27" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
               <folding />
             </state>
@@ -75,10 +79,10 @@
       <file leaf-file-name="wx_express.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/wx_express.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5762712">
-              <caret line="65" column="101" selection-start-line="65" selection-start-column="101" selection-end-line="65" selection-end-column="101" />
+            <state vertical-scroll-proportion="0.60126585">
+              <caret line="65" column="124" selection-start-line="65" selection-start-column="124" selection-end-line="65" selection-end-column="124" />
               <folding>
-                <marker date="1467555291000" expanded="true" signature="486:680" placeholder="select a.id db_province_express" />
+                <marker date="1467555551000" expanded="true" signature="486:680" placeholder="select a.id db_province_express" />
               </folding>
             </state>
           </provider>
@@ -87,7 +91,7 @@
       <file leaf-file-name="wx_coupon.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/wx_coupon.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.346154">
+            <state vertical-scroll-proportion="0.0">
               <caret line="38" column="44" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="44" />
               <folding />
             </state>
@@ -95,6 +99,9 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="modificationStamps">
@@ -723,11 +730,12 @@
       <workItem from="1467036602057" duration="15617000" />
       <workItem from="1467290698033" duration="9228000" />
       <workItem from="1467383696019" duration="30438000" />
+      <workItem from="1467555354139" duration="166000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55605000" />
+    <option name="totallyTimeSpent" value="55771000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="30" y="23" width="1410" height="877" extended-state="6" />
@@ -739,7 +747,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3299363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32909784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -800,6 +808,66 @@
     <entry file="file://$PROJECT_DIR$/api/wx_customer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="1918" column="55" selection-start-line="1918" selection-start-column="7" selection-end-line="1918" selection-end-column="55" />
+          <folding>
+            <element signature="e#6#197#0#PHP" expanded="true" />
+            <marker date="1467538261000" expanded="true" signature="10443:10714" placeholder="select ${{$f... " />
+            <marker date="1467538261000" expanded="true" signature="14971:15052" placeholder="select id,co... o_company_goods_type" />
+            <marker date="1467538261000" expanded="true" signature="21898:22178" placeholder="select ${{$f... " />
+            <marker date="1467538261000" expanded="true" signature="34716:34981" placeholder="select ${{$f... " />
+            <marker date="1467538261000" expanded="true" signature="37036:37122" placeholder="select * fro... db_goods" />
+            <marker date="1467538261000" expanded="true" signature="38402:38628" placeholder="select ${{$f... " />
+            <marker date="1467538261000" expanded="true" signature="69894:69980" placeholder="select * fro... db_goods" />
+            <marker date="1467538261000" expanded="true" signature="86158:86243" placeholder="select * fro... db_goods" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/wx_pay.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="90" column="21" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/env.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="146" column="6" selection-start-line="146" selection-start-column="6" selection-end-line="146" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="296" column="27" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/wx_express.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1467555551000" expanded="true" signature="486:680" placeholder="select a.id db_province_express" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/wx_coupon.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="44" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/wx_customer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="1247" column="0" selection-start-line="1247" selection-start-column="0" selection-end-line="1247" selection-end-column="0" />
           <folding>
             <element signature="e#6#197#0#PHP" expanded="true" />
@@ -843,9 +911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="206" column="51" selection-start-line="206" selection-start-column="51" selection-end-line="206" selection-end-column="51" />
-          <folding>
-            <element signature="e#6#55#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -853,7 +918,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="243" column="8" selection-start-line="243" selection-start-column="4" selection-end-line="243" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -901,9 +965,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="e#6#55#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -927,7 +988,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="243" column="8" selection-start-line="243" selection-start-column="4" selection-end-line="243" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -975,9 +1035,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.034199726">
           <caret line="206" column="51" selection-start-line="206" selection-start-column="51" selection-end-line="206" selection-end-column="51" />
-          <folding>
-            <element signature="e#6#55#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -985,7 +1042,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.034199726">
           <caret line="243" column="8" selection-start-line="243" selection-start-column="4" selection-end-line="243" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -999,7 +1055,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/env.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.264151">
+        <state vertical-scroll-proportion="0.0">
           <caret line="146" column="6" selection-start-line="146" selection-start-column="6" selection-end-line="146" selection-end-column="6" />
           <folding />
         </state>
@@ -1007,7 +1063,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/wx_coupon.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.346154">
+        <state vertical-scroll-proportion="0.0">
           <caret line="38" column="44" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="44" />
           <folding />
         </state>
@@ -1015,7 +1071,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/conf/route.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.230769">
+        <state vertical-scroll-proportion="0.0">
           <caret line="296" column="27" selection-start-line="296" selection-start-column="27" selection-end-line="296" selection-end-column="27" />
           <folding />
         </state>
@@ -1023,7 +1079,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/wx_pay.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.96153843">
+        <state vertical-scroll-proportion="0.0">
           <caret line="90" column="21" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
           <folding />
         </state>
@@ -1031,7 +1087,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/wx_customer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-325.0">
+        <state vertical-scroll-proportion="0.0">
           <caret line="1918" column="55" selection-start-line="1918" selection-start-column="7" selection-end-line="1918" selection-end-column="55" />
           <folding>
             <element signature="e#6#197#0#PHP" expanded="true" />
@@ -1049,10 +1105,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/wx_express.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5762712">
-          <caret line="65" column="101" selection-start-line="65" selection-start-column="101" selection-end-line="65" selection-end-column="101" />
+        <state vertical-scroll-proportion="0.60126585">
+          <caret line="65" column="124" selection-start-line="65" selection-start-column="124" selection-end-line="65" selection-end-column="124" />
           <folding>
-            <marker date="1467555291000" expanded="true" signature="486:680" placeholder="select a.id db_province_express" />
+            <marker date="1467555551000" expanded="true" signature="486:680" placeholder="select a.id db_province_express" />
           </folding>
         </state>
       </provider>
