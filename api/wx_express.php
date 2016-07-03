@@ -28,10 +28,34 @@ function wx_express($action, $id = Null)
                 $give_good_list = json_decode($goods_ids, true);
                 $res = $app->db2->select('db_province_express', '*', ["id" => $express_detail_id])[0];
                 if ($res && $give_good_list) {
+                    $weight_total = 0;
                     foreach ($give_good_list as $good) {
                         //根据GOODS获取商品数据
+                        $mgood = $app->db2->select('db_goods', '*', ["id" => $good['id']])[0];
+                        if ($mgood) {
+                            if ($mgood['isbind'] == 1) {
+                                //绑定商品
+                                $bind_goods = $app->db2->select('db_goods_bind', '*', ["mgid" => $good['id']]);
+                                if ($bind_goods) {
+                                    $single_weight = 0; //单个绑定商品的重量
+                                    foreach ($bind_goods as $sbg) {
+                                        $single_weight += getGoodWeight($sbg['child_mgid']);
+                                    }
 
+                                }
+                            } else {
+                                if ($mgood['pkgsize'] == 1) {
+                                    //打包商品
+
+                                } else {
+                                    //非绑定商品
+                                    $weight_total += getGoodWeight($mgood['gid']); //还需要算上数量
+                                }
+                            }
+                        }
                     }
+
+
                 }
             }
             respCustomer($res);
@@ -66,4 +90,18 @@ function wx_express($action, $id = Null)
         default:
             error(1100);
     }
+}
+
+/**
+ * 获取单个商品的ID
+ * @param $good
+ */
+function getGoodWeight($good)
+{
+    $app = \Slim\Slim::getInstance();
+    //从基础资料中读取商品的Weight信息
+    if ($good) {
+
+    }
+    return 0;
 }
