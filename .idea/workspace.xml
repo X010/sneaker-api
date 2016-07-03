@@ -22,6 +22,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="wx_customer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/wx_customer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.7924528">
+              <caret line="1918" column="55" selection-start-line="1918" selection-start-column="7" selection-end-line="1918" selection-end-column="55" />
+              <folding>
+                <element signature="e#6#197#0#PHP" expanded="true" />
+                <marker date="1467538261000" expanded="true" signature="10443:10714" placeholder="select ${{$f... " />
+                <marker date="1467538261000" expanded="true" signature="14971:15052" placeholder="select id,co... o_company_goods_type" />
+                <marker date="1467538261000" expanded="true" signature="21898:22178" placeholder="select ${{$f... " />
+                <marker date="1467538261000" expanded="true" signature="34716:34981" placeholder="select ${{$f... " />
+                <marker date="1467538261000" expanded="true" signature="37036:37122" placeholder="select * fro... db_goods" />
+                <marker date="1467538261000" expanded="true" signature="38402:38628" placeholder="select ${{$f... " />
+                <marker date="1467538261000" expanded="true" signature="69894:69980" placeholder="select * fro... db_goods" />
+                <marker date="1467538261000" expanded="true" signature="86158:86243" placeholder="select * fro... db_goods" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wx_pay.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/wx_pay.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.96153843">
+              <caret line="90" column="21" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="env.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conf/env.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -45,10 +75,10 @@
       <file leaf-file-name="wx_express.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/wx_express.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8940678">
-              <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.7944915">
+              <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
               <folding>
-                <marker date="1467545396000" expanded="true" signature="486:680" placeholder="select a.id db_province_express" />
+                <marker date="1467546279000" expanded="true" signature="486:680" placeholder="select a.id db_province_express" />
               </folding>
             </state>
           </provider>
@@ -692,12 +722,12 @@
       <workItem from="1467035946900" duration="322000" />
       <workItem from="1467036602057" duration="15617000" />
       <workItem from="1467290698033" duration="9228000" />
-      <workItem from="1467383696019" duration="24204000" />
+      <workItem from="1467383696019" duration="25007000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49371000" />
+    <option name="totallyTimeSpent" value="50174000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="30" y="23" width="1410" height="877" extended-state="6" />
@@ -752,11 +782,6 @@
             <marker date="1467538261000" expanded="true" signature="10443:10714" placeholder="select ${{$f... " />
             <marker date="1467538261000" expanded="true" signature="14971:15052" placeholder="select id,co... o_company_goods_type" />
             <marker date="1467538261000" expanded="true" signature="21898:22178" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="23919:24132" placeholder="select count... db_goods" />
-            <marker date="1467538261000" expanded="true" signature="25983:26271" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="26307:26528" placeholder="select count... db_goods" />
-            <marker date="1467538261000" expanded="true" signature="26578:26842" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="26878:27075" placeholder="select count... db_goods" />
             <marker date="1467538261000" expanded="true" signature="34716:34981" placeholder="select ${{$f... " />
             <marker date="1467538261000" expanded="true" signature="37036:37122" placeholder="select * fro... db_goods" />
             <marker date="1467538261000" expanded="true" signature="38402:38628" placeholder="select ${{$f... " />
@@ -817,11 +842,6 @@
             <marker date="1467538261000" expanded="true" signature="10443:10714" placeholder="select ${{$f... " />
             <marker date="1467538261000" expanded="true" signature="14971:15052" placeholder="select id,co... o_company_goods_type" />
             <marker date="1467538261000" expanded="true" signature="21898:22178" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="23919:24132" placeholder="select count... db_goods" />
-            <marker date="1467538261000" expanded="true" signature="25983:26271" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="26307:26528" placeholder="select count... db_goods" />
-            <marker date="1467538261000" expanded="true" signature="26578:26842" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="26878:27075" placeholder="select count... db_goods" />
             <marker date="1467538261000" expanded="true" signature="34716:34981" placeholder="select ${{$f... " />
             <marker date="1467538261000" expanded="true" signature="37036:37122" placeholder="select * fro... db_goods" />
             <marker date="1467538261000" expanded="true" signature="38402:38628" placeholder="select ${{$f... " />
@@ -896,11 +916,6 @@
             <marker date="1467538261000" expanded="true" signature="10443:10714" placeholder="select ${{$f... " />
             <marker date="1467538261000" expanded="true" signature="14971:15052" placeholder="select id,co... o_company_goods_type" />
             <marker date="1467538261000" expanded="true" signature="21898:22178" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="23919:24132" placeholder="select count... db_goods" />
-            <marker date="1467538261000" expanded="true" signature="25983:26271" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="26307:26528" placeholder="select count... db_goods" />
-            <marker date="1467538261000" expanded="true" signature="26578:26842" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="26878:27075" placeholder="select count... db_goods" />
             <marker date="1467538261000" expanded="true" signature="34716:34981" placeholder="select ${{$f... " />
             <marker date="1467538261000" expanded="true" signature="37036:37122" placeholder="select * fro... db_goods" />
             <marker date="1467538261000" expanded="true" signature="38402:38628" placeholder="select ${{$f... " />
@@ -929,37 +944,6 @@
         <state vertical-scroll-proportion="0.5075034">
           <caret line="285" column="1" selection-start-line="285" selection-start-column="1" selection-end-line="285" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/wx_pay.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.868673">
-          <caret line="90" column="21" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/wx_customer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4254446">
-          <caret line="1237" column="175" selection-start-line="1237" selection-start-column="27" selection-end-line="1237" selection-end-column="175" />
-          <folding>
-            <element signature="e#6#197#0#PHP" expanded="true" />
-            <marker date="1467538261000" expanded="true" signature="10443:10714" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="14971:15052" placeholder="select id,co... o_company_goods_type" />
-            <marker date="1467538261000" expanded="true" signature="21898:22178" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="23919:24132" placeholder="select count... db_goods" />
-            <marker date="1467538261000" expanded="true" signature="25983:26271" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="26307:26528" placeholder="select count... db_goods" />
-            <marker date="1467538261000" expanded="true" signature="26578:26842" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="26878:27075" placeholder="select count... db_goods" />
-            <marker date="1467538261000" expanded="true" signature="34716:34981" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="37036:37122" placeholder="select * fro... db_goods" />
-            <marker date="1467538261000" expanded="true" signature="38402:38628" placeholder="select ${{$f... " />
-            <marker date="1467538261000" expanded="true" signature="69894:69980" placeholder="select * fro... db_goods" />
-            <marker date="1467538261000" expanded="true" signature="86158:86243" placeholder="select * fro... db_goods" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1013,12 +997,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/wx_customer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7924528">
+          <caret line="1918" column="55" selection-start-line="1918" selection-start-column="7" selection-end-line="1918" selection-end-column="55" />
+          <folding>
+            <element signature="e#6#197#0#PHP" expanded="true" />
+            <marker date="1467538261000" expanded="true" signature="10443:10714" placeholder="select ${{$f... " />
+            <marker date="1467538261000" expanded="true" signature="14971:15052" placeholder="select id,co... o_company_goods_type" />
+            <marker date="1467538261000" expanded="true" signature="21898:22178" placeholder="select ${{$f... " />
+            <marker date="1467538261000" expanded="true" signature="34716:34981" placeholder="select ${{$f... " />
+            <marker date="1467538261000" expanded="true" signature="37036:37122" placeholder="select * fro... db_goods" />
+            <marker date="1467538261000" expanded="true" signature="38402:38628" placeholder="select ${{$f... " />
+            <marker date="1467538261000" expanded="true" signature="69894:69980" placeholder="select * fro... db_goods" />
+            <marker date="1467538261000" expanded="true" signature="86158:86243" placeholder="select * fro... db_goods" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/wx_pay.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.96153843">
+          <caret line="90" column="21" selection-start-line="90" selection-start-column="21" selection-end-line="90" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/wx_express.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8940678">
-          <caret line="39" column="18" selection-start-line="39" selection-start-column="18" selection-end-line="39" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.7944915">
+          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
           <folding>
-            <marker date="1467545396000" expanded="true" signature="486:680" placeholder="select a.id db_province_express" />
+            <marker date="1467546279000" expanded="true" signature="486:680" placeholder="select a.id db_province_express" />
           </folding>
         </state>
       </provider>

@@ -25,14 +25,12 @@ function wx_express($action, $id = Null)
             $goods_ids = get_value($data, 'gid');
             $res = null;
             if (!empty($goods_ids) && $express_detail_id) {
-                $ids = split(",", $goods_ids);
+                $give_good_list = json_decode($goods_ids, true);
                 $res = $app->db2->select('db_province_express', '*', ["id" => $express_detail_id])[0];
-                if ($res) {
-                    foreach ($ids as $gid) {
-                        //判断商量是不是打包商品,如果是打包商品,并进行拆分
-                        if (!empty($gid)) {
+                if ($res && $give_good_list) {
+                    foreach ($give_good_list as $good) {
+                        //根据GOODS获取商品数据
 
-                        }
                     }
                 }
             }
