@@ -5,13 +5,37 @@
  * Date: 16/7/3
  * Time: 16:55
  */
-
 function wx_express($action, $id = Null)
 {
     init_menu_and_module_name(__FUNCTION__); //初始化当前操作的菜单和模块名
     $app = \Slim\Slim::getInstance();
     $data = $app->params;
-    switch($action){
+    switch ($action) {
+        case 'express_get':
+            $province = get_value($data, 'province'); //获取收货人的省份
+            $express_res = null;
+            if ($province) {
+                $express_res = $app->db2->query("select a.id as id, b.express as express,a.express_id as express_id  from db_province_express as a,db_express as b where a.status<>9 and b.status<>9 and a.express_id=b.id and province='$province'")->fetchAll();
+            }
+            respCustomer($express_res);
+            break;
+        case 'express_order_price':
+            //根据上传的商品信息来获取物流价格
+            $express_detail_id = get_value($data, 'express_detail_id');
+            $goods_ids = get_value($data, 'gid');
+            $res = null;
+            if (!empty($goods_ids) && $express_detail_id) {
+                $give_good_list = json_decode($goods_ids, true);
+                $res = $app->db2->select('db_province_express', '*', ["id" => $express_detail_id])[0];
+                if ($res && $give_good_list) {
+                    foreach ($give_good_list as $good) {
+                        //根据GOODS获取商品数据
+
+                    }
+                }
+            }
+            respCustomer($res);
+            break;
         case 'express_price_get':
             $province=get_value($data,'province');//收货省份
             if(!$province){
@@ -42,5 +66,4 @@ function wx_express($action, $id = Null)
         default:
             error(1100);
     }
-
 }
