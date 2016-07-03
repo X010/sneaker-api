@@ -23,6 +23,7 @@ function wx_express($action, $id = Null)
             //根据上传的商品信息来获取物流价格
             $express_detail_id = get_value($data, 'express_detail_id');
             $goods_ids = get_value($data, 'gid');
+            $scid = get_value($data, 'scid');
             $res = null;
             if (!empty($goods_ids) && $express_detail_id) {
                 $give_good_list = json_decode($goods_ids, true);
@@ -39,22 +40,31 @@ function wx_express($action, $id = Null)
                                 if ($bind_goods) {
                                     $single_weight = 0; //单个绑定商品的重量
                                     foreach ($bind_goods as $sbg) {
-                                        $single_weight += getGoodWeight($sbg['child_mgid']);
+                                        $db_goods_sbg = $app->db2->select('db_goods', '*', ['id' => $sbg['child_mgid']])[0];
+                                        if ($db_goods_sbg) {
+                                            $single_weight += getGoodWeight($db_goods_sbg['gid'], $scid);
+                                        }
                                     }
-
+                                    $weight_total += ($single_weight * $good['qty']);
                                 }
                             } else {
                                 if ($mgood['pkgsize'] == 1) {
                                     //打包商品
-
+                                    $weight_total += (getGoodWeight($mgood['gid'], $scid) * $mgood['spec']);
                                 } else {
                                     //非绑定商品
-                                    $weight_total += getGoodWeight($mgood['gid']); //还需要算上数量
+                                    $weight_total += getGoodWeight($mgood['gid'], $scid); //还需要算上数量
                                 }
                             }
                         }
                     }
-
+                    $res['weight'] = $weight_total;
+                    //根据重量计算价格,以克计算
+                    if ($weight_total <= 1000) {
+                        $res['express_price'] = $res['first_price'];
+                    } else {
+                        $res['express_price']=((float)($weight_total-1000))/1000*$res['continue_price'];
+                    }
 
                 }
             }
@@ -91,12 +101,15 @@ function wx_express($action, $id = Null)
  * 获取单个商品的ID
  * @param $good
  */
-function getGoodWeight($good)
+function getGoodWeight($good, $scid)
 {
     $app = \Slim\Slim::getInstance();
     //从基础资料中读取商品的Weight信息
     if ($good) {
-
+        $o_good = $app->db->select('o_company_goods', '*', ['AND' => ['gid' => $good, 'in_cid' => $scid]]);
+        if ($o_good) {
+            return $o_good[0]['weight'];
+        }
     }
     return 0;
 }
