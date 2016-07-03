@@ -19,20 +19,19 @@ function wx_express($action, $id = Null)
             $good_id=get_value($data,'good_id');//货物id
             $good_count=get_value($data,'good_count');//数量
             //$weight=get_value($data,'weight');//箱重
-
             $weight=$app->db->get('o_company_goods',['weight'],['gid'=>$good_id]);//查询货物箱重
 
             //查询快递价格
-            //$express_price=$app->db2->select('db_province_express',['AND'=>['province'=>$province,'express_id'=>$express_id]]);
-            $express_price=$app->db2->get('db_province_express',['first_price','continue_price'],['province'=>$province,'express_id'=>$express_id,'status'=>1]);
+//            $express_price=$app->db2->select('db_province_express',['first_price','continue_price'],['AND'=>['province'=>$province,'express_id'=>$express_id,'status'=>1]]);
+            $express_price=$app->db2->get('db_province_express',['first_price','continue_price'],['AND' =>['province'=>$province,'express_id'=>$express_id,'status'=>1]]);
+            //var_dump($app->db2->last_query());
             $data=0;
             if($express_price){
                 $first_price=$express_price['first_price'];
                 $continue_price=$express_price['continue_price'];
-                $price=$first_price+(($weight*$good_count-1)*$continue_price);//计算运费 首重价格＋((重量－首重1公斤)＊续重价格)
+                $continue_weight=(int)$weight * (int)$good_count - 1;//续重重量 箱重＊数量－首重1kg
+                $price=$first_price + $continue_weight * $continue_price;//计算运费 首重价格＋(续重重量＊续重价格)
                 $data=$price;
-                //$data2['first']=$express_price['first_price'];
-                //$data2['continue']=$express_price['continue_price'];
             }
             respCustomer($data);
             break;
