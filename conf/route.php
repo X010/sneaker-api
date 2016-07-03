@@ -299,4 +299,10 @@ $app->config('route', [
         'method' => 'any',
         'hook'   => ['init'],
     ],
+    'wx_express'=>[
+        'menu'  => '通用#99',
+        'module'=> '微信公众号物流相关接口#8',
+        'method' => 'any',
+        'hook'   => ['init'],
+    ],
 ]);
