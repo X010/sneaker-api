@@ -50,10 +50,10 @@ function wx_express($action, $id = Null)
                             } else {
                                 if ($mgood['pkgsize'] == 1) {
                                     //打包商品
-                                    $weight_total += (getGoodWeight($mgood['gid'], $scid) * $mgood['spec']);
+                                    $weight_total += ((getGoodWeight($mgood['gid'], $scid) * $mgood['spec']) * $good['qty']);
                                 } else {
                                     //非绑定商品
-                                    $weight_total += getGoodWeight($mgood['gid'], $scid); //还需要算上数量
+                                    $weight_total += (getGoodWeight($mgood['gid'], $scid) * $good['qty']); //还需要算上数量
                                 }
                             }
                         }
@@ -63,7 +63,7 @@ function wx_express($action, $id = Null)
                     if ($weight_total <= 1000) {
                         $res['express_price'] = $res['first_price'];
                     } else {
-                        $res['express_price']=((float)($weight_total-1000))/1000*$res['continue_price']+ $res['first_price'];
+                        $res['express_price'] = ((float)($weight_total - 1000)) / 1000 * $res['continue_price'] + $res['first_price'];
                     }
 
                 }
