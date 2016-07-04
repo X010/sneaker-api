@@ -912,7 +912,7 @@ function wx_customer($action, $id = Null)
             //读取订单信息根据订单ID page: 订单 - 订单详情
             param_need($data, ['id']);
             $id = get_value($data, 'id');
-            $fields_order = ['id', 'erp_order_id', 'order_id', 'create_time', 'supplier_company_name', 'delivery', 'pt', 'ispay', 'status', 'total_amount', 'contacts', 'phone', 'receipt', 'cid', 'scid'];
+            $fields_order = ['id', 'erp_order_id', 'order_id', 'create_time', 'supplier_company_name', 'delivery', 'pt', 'ispay', 'status', 'total_amount', 'contacts', 'phone', 'receipt', 'cid', 'scid','express_money'];
             $order = $app->db2->get('db_order', $fields_order, ['id' => $id]);
             if (!$order) {
                 respCustomer([], 0);
@@ -1128,6 +1128,55 @@ function wx_customer($action, $id = Null)
             if (!$company || !$order_item_list) {
                 error(7101, 'ccid');
             }
+
+            //计算物流费用
+            $express_detail_id = get_value($data, 'express_detail_id');
+            $res = null;
+            if ($express_detail_id) {
+                $give_good_list = $order_item_list;
+                $res = $app->db2->select('db_province_express', '*', ["id" => $express_detail_id])[0];
+                if ($res && $give_good_list) {
+                    $weight_total = 0;
+                    foreach ($give_good_list as $good) {
+                        //根据GOODS获取商品数据
+                        $mgood = $app->db2->select('db_goods', '*', ["id" => $good['mgid']])[0];
+                        if ($mgood) {
+                            if ($mgood['isbind'] == 1) {
+                                //绑定商品
+                                $bind_goods = $app->db2->select('db_goods_bind', '*', ["mgid" => $good['mgid']]);
+                                if ($bind_goods) {
+                                    $single_weight = 0; //单个绑定商品的重量
+                                    foreach ($bind_goods as $sbg) {
+                                        $db_goods_sbg = $app->db2->select('db_goods', '*', ['id' => $sbg['child_mgid']])[0];
+                                        if ($db_goods_sbg) {
+                                            $single_weight += getGoodWeight($db_goods_sbg['gid'], $scid);
+                                        }
+                                    }
+                                    $weight_total += ($single_weight * $good['total']);
+                                }
+                            } else {
+                                if ($mgood['pkgsize'] == 1) {
+                                    //打包商品
+                                    $weight_total += (getGoodWeight($mgood['gid'], $scid) * $mgood['spec'] * $good['total']);
+                                } else {
+                                    //非绑定商品
+                                    $weight_total += (getGoodWeight($mgood['gid'], $scid) * $good['total']); //还需要算上数量
+                                }
+                            }
+                        }
+                    }
+                    $res['weight'] = $weight_total;
+                    //根据重量计算价格,以克计算
+                    if ($weight_total <= 1000) {
+                        $res['express_price'] = $res['first_price'];
+                    } else {
+                        $res['express_price'] = ((float)($weight_total - 1000)) / 1000 * $res['continue_price'] + $res['first_price'];
+                    }
+
+                }
+            }
+
+
             $real_order_list = [];
             $tmp_order_list = [];
             foreach ($order_item_list as $item) {
@@ -1261,6 +1310,8 @@ function wx_customer($action, $id = Null)
             }
 
             unset($order['items']);
+            $order['express_money'] = $res['express_price'];
+            $order['total_amount']=$order['express_money']+ $order['total_amount'];//加上物流费用
             $insert_id = $app->db2->insert('db_order', $order);
             $oper = [
                 'order_no' => $order_id,
@@ -1792,6 +1843,7 @@ class Strategy
         return $order;
     }
 
+
     /**
      * 原始商品
      * @param  [type]  $cid            [description]
@@ -1884,6 +1936,24 @@ class Strategy
         return $order;
     }
 
+}
+
+
+/**
+ * 获取单个商品的ID
+ * @param $good
+ */
+function getGoodWeight($good, $scid)
+{
+    $app = \Slim\Slim::getInstance();
+    //从基础资料中读取商品的Weight信息
+    if ($good) {
+        $o_good = $app->db->select('o_company_goods', '*', ['AND' => ['gid' => $good, 'in_cid' => $scid]]);
+        if ($o_good) {
+            return $o_good[0]['weight'];
+        }
+    }
+    return 0;
 }
 
 /**
