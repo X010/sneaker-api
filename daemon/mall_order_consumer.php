@@ -132,7 +132,6 @@ do {
         $order_data['in_sname'] = $store_res['name'];
         $order_data['rank'] = $order_data['delivery'];
         $order_data['discount_amount'] = $order_data['favorable'];
-        $order_data['express'] = $order_data['express'] * 100;
         $order_data['in_cname'] = $my_model->get_name_by_id('o_company', $order_data['in_cid']);
         $order_data['out_cname'] = $my_model->get_name_by_id('o_company', $order_data['out_cid']);
 
