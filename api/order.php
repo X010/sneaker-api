@@ -692,7 +692,7 @@ function order($action, $id = NULL){
                 $col = ['amount','auto_delete_date','buid','buname','checktime','createtime',
                     'cuid','cuname','id','in_cid','in_cname','ispaid','mall_orderno','out_sid',
                     'out_sname','pay_type','rank','status','suid','suname','tax_amount',
-                    'type','uid','uname','updatetime','from'];
+                    'type','uid','uname','updatetime','from','express'];
 
                 $res = $my_model->view_list($data, $col);
             }
