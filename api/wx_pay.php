@@ -601,6 +601,7 @@ function convertErpOrder($order)
         'receipt' => $order['receipt'],
         'delivery' => $order['delivery'],
         'platform' => $order['platform'],
+        'express'=>$order['express_money'],
         'ispaid' => 1,
         'pay_type' => 1,
         'uid' => $order['uid'],
