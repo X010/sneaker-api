@@ -68,7 +68,7 @@ $app->configureMode('development', function () use ($app) {
     $app->config('bindUrl','http://local.api.test.ms9d.com/login/bind_third'); //绑定账号
     $app->config('bindHXUrl','http://local.api.test.ms9d.com/login/bind_third2'); //会销绑定账号
     $app->config('b2c_id', [
-        'pbs' => 2346
+        'pbs' => 13
     ]);
     $app->config('open_cache', false);
 
@@ -125,7 +125,7 @@ $app->configureMode('test', function () use ($app) {
     $app->config('bindUrl','http://local.api.test.ms9d.com/login/bind_third'); //绑定账号
     $app->config('bindHXUrl','http://local.api.test.ms9d.com/login/bind_third2'); //会销绑定账号
     $app->config('b2c_id', [
-        'pbs' => 2346
+        'pbs' => 13
     ]);
     $app->config('open_cache', false);
 });
