@@ -80,7 +80,7 @@ $app->configureMode('development', function () use ($app) {
 $app->configureMode('test', function () use ($app) {
     $app->Sneaker->cfg_mysql = [
         'database_type' => 'mysql',
-        'database_name' => 'runner',
+        'database_name' => 'runner-jane',
         'server' => '115.28.8.173',
         'username' => 'root',
         'password' => 'runnerpassword',
@@ -89,7 +89,7 @@ $app->configureMode('test', function () use ($app) {
     ];
     $app->Sneaker->cfg_mysql2 = [
         'database_type' => 'mysql',
-        'database_name' => 'bmall-admin',
+        'database_name' => 'bmall-jane',
         'server' => '115.28.8.173',
         'username' => 'root',
         'password' => 'runnerpassword',
