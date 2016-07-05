@@ -20,7 +20,7 @@ class StockOut extends Bill{
         'settle_id','in_cid','in_cname','tax_amount','checktime','settletime','lastdate','cost_amount','pay_type',
         'hash','sorting_id','car_license','business','mall_orderno','receipt','contacts','phone','settle_status',
         'discount_amount','rank','small_amount','settle_type','commission_status','commission_id','gids','box_total',
-        'box_total2','express'];
+        'box_total2'];
     
     //搜索字段自动匹配
     protected $search_data = ['id','order_id'];
@@ -29,7 +29,7 @@ class StockOut extends Bill{
      * 数据库字段（只允许以下字段写入）
      */
     protected $format_data_glist = ['*id', '*order_id', 'sn', '*gid', '*gname', '*gpyname', '*gcode', '*gbarcode', '*gtid', '*gbid',
-        '*gspec', '*gunit', '*gtax_rate', '*total', '*unit_price', '*amount_price', '*memo', '*tax_price', '*reserveid','cost_price','express'];
+        '*gspec', '*gunit', '*gtax_rate', '*total', '*unit_price', '*amount_price', '*memo', '*tax_price', '*reserveid','cost_price'];
 
 
     //需要分和元转换的金额字段
