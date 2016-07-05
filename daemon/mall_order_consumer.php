@@ -214,7 +214,6 @@ do {
                     $data['cname'] = $order_data['out_cname'];
                     $data['in_cid'] = $order_data['in_cid'];
                     $data['in_cname'] = $order_data['in_cname'];
-                    $data['express'] = $order_data['express'];
                     $data['mall_orderno'] = $order_data['mall_orderno'];
                     $data['receipt'] = $order_data['receipt'];
                     $data['contacts'] = $order_data['contacts'];
@@ -323,6 +322,7 @@ do {
         } else {
             //通知商城那边订单创建成功
             $msg = '订单创建成功';
+            $mall_model->notice_order($order_data['orderNo'], 1, $msg, $order_id);
             $mall_model->notice_order($order_data['orderNo'], 1, $msg, $order_id);
 
         }
