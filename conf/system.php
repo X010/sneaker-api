@@ -39,7 +39,7 @@ $app->config('config_account', [        //会计科目
 $app->config('mall_buyer_role', '50');
 $app->config('mall_default_store_name', '默认仓库');
 $app->config('mall_default_user_name', '默认用户');
-$app->config('mall_order_queue_name', 'queue_mo_jane');
+$app->config('mall_order_queue_name', 'queue_mo');
 
 
 $app->config('photo_url', 'http://photo.ms9d.com/');
