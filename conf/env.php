@@ -58,15 +58,15 @@ $app->configureMode('development', function () use ($app) {
     $app->config('tofcUrl', 'http://115.28.8.173:8082/inc/orderStatus.do');  //商城订单状态变更接口
     $app->config('geoUrl', 'http://sms.ms9d.com/geo/geo.do');  //获取地域信息接口
     $app->config('smsUrl', 'http://sms.ms9d.com/message/sms.do');  //发送短信接口
-    $app->config('orderCreateUrl', 'http://api.test.ms9d.com/mall/order_create'); //erp订单创建接口
-    $app->config('orderNotifyUrl', 'http://api.test.ms9d.com/wx_pay/callback');   //支付网关回调接口
-    $app->config('vipNotifyUrl', 'http://api.test.ms9d.com/wx_pay/callback_vip');   //支付网关回调接口 会员vip
-    $app->config('erpPriceUrl', 'http://api.test.ms9d.com/mall/price_read_single'); //erp价格接口
-    $app->config('orderCancelUrl', 'http://api.test.ms9d.com/mall/order_cancel/');  //erp取消订单接口
-    $app->config('loginUrl', 'http://api.test.ms9d.com/login/in');  //用户登录接口
-    $app->config('logoutUrl', 'http://api.test.ms9d.com/login/out');  //用户退出接口
-    $app->config('bindUrl','http://api.test.ms9d.com/login/bind_third'); //绑定账号
-    $app->config('bindHXUrl','http://api.test.ms9d.com/login/bind_third2'); //会销绑定账号
+    $app->config('orderCreateUrl', 'http://local.api.test.ms9d.com/mall/order_create'); //erp订单创建接口
+    $app->config('orderNotifyUrl', 'http://local.api.test.ms9d.com/wx_pay/callback');   //支付网关回调接口
+    $app->config('vipNotifyUrl', 'http://local.api.test.ms9d.com/wx_pay/callback_vip');   //支付网关回调接口 会员vip
+    $app->config('erpPriceUrl', 'http://local.api.test.ms9d.com/mall/price_read_single'); //erp价格接口
+    $app->config('orderCancelUrl', 'http://local.api.test.ms9d.com/mall/order_cancel/');  //erp取消订单接口
+    $app->config('loginUrl', 'http://local.api.test.ms9d.com/login/in');  //用户登录接口
+    $app->config('logoutUrl', 'http://local.api.test.ms9d.com/login/out');  //用户退出接口
+    $app->config('bindUrl','http://local.api.test.ms9d.com/login/bind_third'); //绑定账号
+    $app->config('bindHXUrl','http://local.api.test.ms9d.com/login/bind_third2'); //会销绑定账号
     $app->config('b2c_id', [
         'pbs' => 2346
     ]);
@@ -115,15 +115,15 @@ $app->configureMode('test', function () use ($app) {
     $app->config('geoUrl', 'http://sms.ms9d.com/geo/geo.do');  //获取地域信息接口
     $app->config('smsUrl', 'http://sms.ms9d.com/message/sms.do');  //发送短信接口
 
-    $app->config('orderCreateUrl', 'http://api.test.ms9d.com/mall/order_create'); //erp订单创建接口
-    $app->config('orderNotifyUrl', 'http://api.test.ms9d.com/wx_pay/callback');   //支付网关回调接口
-    $app->config('vipNotifyUrl', 'http://api.test.ms9d.com/wx_pay/callback_vip');   //支付网关回调接口 会员vip
-    $app->config('erpPriceUrl', 'http://api.test.ms9d.com/mall/price_read_single'); //erp价格接口
-    $app->config('orderCancelUrl', 'http://api.test.ms9d.com/mall/order_cancel/');  //erp取消订单接口
-    $app->config('loginUrl', 'http://api.test.ms9d.com/login/in');  //用户登录接口
-    $app->config('logoutUrl', 'http://api.test.ms9d.com/login/out');  //用户退出接口
-    $app->config('bindUrl','http://api.test.ms9d.com/login/bind_third'); //绑定账号
-    $app->config('bindHXUrl','http://api.test.ms9d.com/login/bind_third2'); //会销绑定账号
+    $app->config('orderCreateUrl', 'http://local.api.test.ms9d.com/mall/order_create'); //erp订单创建接口
+    $app->config('orderNotifyUrl', 'http://local.api.test.ms9d.com/wx_pay/callback');   //支付网关回调接口
+    $app->config('vipNotifyUrl', 'http://local.api.test.ms9d.com/wx_pay/callback_vip');   //支付网关回调接口 会员vip
+    $app->config('erpPriceUrl', 'http://local.api.test.ms9d.com/mall/price_read_single'); //erp价格接口
+    $app->config('orderCancelUrl', 'http://local.api.test.ms9d.com/mall/order_cancel/');  //erp取消订单接口
+    $app->config('loginUrl', 'http://local.api.test.ms9d.com/login/in');  //用户登录接口
+    $app->config('logoutUrl', 'http://local.api.test.ms9d.com/login/out');  //用户退出接口
+    $app->config('bindUrl','http://local.api.test.ms9d.com/login/bind_third'); //绑定账号
+    $app->config('bindHXUrl','http://local.api.test.ms9d.com/login/bind_third2'); //会销绑定账号
     $app->config('b2c_id', [
         'pbs' => 2346
     ]);
