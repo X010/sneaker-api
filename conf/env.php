@@ -43,7 +43,7 @@ $app->configureMode('development', function () use ($app) {
 
     $app->Sneaker->cfg_kv = [
         'host' => '115.28.8.173',
-        'port' => 7717
+        'port' => 7718
     ];
 
     $app->config([
@@ -52,7 +52,7 @@ $app->configureMode('development', function () use ($app) {
 
     $app->config('sms_verify', False);
 
-    $app->config('my_url', 'http://115.28.8.173:809'); //erp后台地址
+    $app->config('my_url', 'http://local.api.test.ms9d.com'); //erp后台地址
     $app->config('quartzUrl', 'http://quartz.ms9d.com/api/httpapi.action');  //计划任务接口
     $app->config('quartzRemoveUrl', 'http://115.28.93.117:8085/api/removeQuartzApi.do');  //计划任务取消接口
     $app->config('tofcUrl', 'http://115.28.8.173:8083/inc/orderStatus.do');  //商城订单状态变更接口
@@ -99,7 +99,7 @@ $app->configureMode('test', function () use ($app) {
 
     $app->Sneaker->cfg_kv = [
         'host' => 'localhost',
-        'port' => 7717
+        'port' => 7718
     ];
 
     $app->config([
@@ -108,7 +108,7 @@ $app->configureMode('test', function () use ($app) {
 
     $app->config('sms_verify', False);
 
-    $app->config('my_url', 'http://115.28.8.173:808'); //erp后台地址
+    $app->config('my_url', 'http://local.api.test.ms9d.com'); //erp后台地址
     $app->config('quartzUrl', 'http://quartz.ms9d.com/api/httpapi.action');  //计划任务接口
     $app->config('quartzRemoveUrl', 'http://115.28.93.117:8085/api/removeQuartzApi.do');  //计划任务取消接口
     $app->config('tofcUrl', 'http://115.28.8.173:8083/inc/orderStatus.do');  //商城订单状态变更接口
