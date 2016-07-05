@@ -111,7 +111,7 @@ $app->configureMode('test', function () use ($app) {
     $app->config('my_url', 'http://115.28.8.173:808'); //erp后台地址
     $app->config('quartzUrl', 'http://quartz.ms9d.com/api/httpapi.action');  //计划任务接口
     $app->config('quartzRemoveUrl', 'http://115.28.93.117:8085/api/removeQuartzApi.do');  //计划任务取消接口
-    $app->config('tofcUrl', 'http://115.28.8.173:8082/inc/orderStatus.do');  //商城订单状态变更接口
+    $app->config('tofcUrl', 'http://115.28.8.173:8083/inc/orderStatus.do');  //商城订单状态变更接口
     $app->config('geoUrl', 'http://sms.ms9d.com/geo/geo.do');  //获取地域信息接口
     $app->config('smsUrl', 'http://sms.ms9d.com/message/sms.do');  //发送短信接口
 

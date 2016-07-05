@@ -324,7 +324,7 @@ do {
         } else {
             //通知商城那边订单创建成功
             $msg = '订单创建成功';
-            $mall_model->notice_order($order_data['orderNo']+$order_data['express'], 1, $msg, $order_id);
+            $mall_model->notice_order($order_data['orderNo'], 1, $msg, $order_id);
 
         }
 
