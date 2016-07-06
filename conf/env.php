@@ -136,21 +136,21 @@ $app->configureMode('test', function () use ($app) {
 $app->configureMode('production', function () use ($app) {
     $app->Sneaker->cfg_mysql = [
         'database_type' => 'mysql',
-        'database_name' => 'runner',
+        'database_name' => 'runner_pbs',
         #'server' => '10.47.120.20',
         'server' => 'rdsf36c9dnv2zx106j95.mysql.rds.aliyuncs.com',
         #'username' => 'root',
-        'username' => 'runner',
-        'password' => 'runnerpassword',
+        'username' => 'runner_pbs',
+        'password' => 'pbs20160706!@#$',
         'charset' => 'utf8',
         'debug_mode' => false //set false when unit-test
     ];
     $app->Sneaker->cfg_mysql2 = [
         'database_type' => 'mysql',
-        'database_name' => 'dbadmin',
+        'database_name' => 'dbadmin_pbs',
         'server' => 'rdsf36c9dnv2zx106j95.mysql.rds.aliyuncs.com',
-        'username' => 'dbadmin',
-        'password' => 'runnerpassword',
+        'username' => 'runner_pbs',
+        'password' => 'pbs20160706!@#$',
         'charset' => 'utf8',
         'debug_mode' => true //set false when unit-test
     ];
@@ -163,29 +163,30 @@ $app->configureMode('production', function () use ($app) {
         'password' => '66bf7d58a47148cd:Runner2015'
     ];
 
+
     $app->config([
         'debug' => false,
     ]);
 
     $app->config('sms_verify', True);
 
-    $app->config('my_url', 'http://yc.api.ms9d.com');  //erp后台地址
+    $app->config('my_url', 'http://api.zsg.99yuncang.com');  //erp后台地址
     //$app->config('quartzUrl', 'http://pa.ms9d.com/api/addQuartzApi.do');  //计划任务接口
     $app->config('quartzUrl', 'http://quartz.ms9d.com/api/httpapi.action');  //计划任务接口
     $app->config('quartzRemoveUrl', 'http://pa.ms9d.com/api/removeQuartzApi.do');  //计划任务取消接口
-    $app->config('tofcUrl', 'http://cg.api.ms9d.com/inc/orderStatus.do');  //商城订单状态变更接口
+    $app->config('tofcUrl', 'http://cg.zsg.99yuncang.com/inc/orderStatus.do');  //商城订单状态变更接口
     $app->config('geoUrl', 'http://sms.ms9d.com/geo/geo.do');  //获取地域信息接口
     $app->config('smsUrl', 'http://sms.ms9d.com/message/sms.do');  //发送短信接口
 
-    $app->config('orderCreateUrl', 'http://yc.api.ms9d.com/mall/order_create'); //erp订单创建接口
-    $app->config('orderNotifyUrl', 'http://yc.api.ms9d.com/wx_pay/callback');   //支付网关回调接口 商品
-    $app->config('vipNotifyUrl', 'http://yc.api.ms9d.com/wx_pay/callback_vip');   //支付网关回调接口 会员vip
-    $app->config('erpPriceUrl', 'http://yc.api.ms9d.com/mall/price_read_single'); //erp价格接口
-    $app->config('orderCancelUrl', 'http://yc.api.ms9d.com/mall/order_cancel/');  //erp取消订单接口
-    $app->config('loginUrl', 'http://yc.api.ms9d.com/login/in');  //用户登录接口
-    $app->config('logoutUrl', 'http://yc.api.ms9d.com/login/out');  //用户退出接口
-    $app->config('bindUrl','http://yc.api.ms9d.com/login/bind_third'); //绑定账号
-    $app->config('bindHXUrl','http://yc.api.ms9d.com/login/bind_third2'); //会销绑定账号
+    $app->config('orderCreateUrl', 'http://api.zsg.99yuncang.com/mall/order_create'); //erp订单创建接口
+    $app->config('orderNotifyUrl', 'http://api.zsg.99yuncang.com/wx_pay/callback');   //支付网关回调接口 商品
+    $app->config('vipNotifyUrl', 'http://api.zsg.99yuncang.com/wx_pay/callback_vip');   //支付网关回调接口 会员vip
+    $app->config('erpPriceUrl', 'http://api.zsg.99yuncang.com/mall/price_read_single'); //erp价格接口
+    $app->config('orderCancelUrl', 'http://api.zsg.99yuncang.com/mall/order_cancel/');  //erp取消订单接口
+    $app->config('loginUrl', 'http://api.zsg.99yuncang.com/login/in');  //用户登录接口
+    $app->config('logoutUrl', 'http://api.zsg.99yuncang.com/login/out');  //用户退出接口
+    $app->config('bindUrl','http://api.zsg.99yuncang.com/login/bind_third'); //绑定账号
+    $app->config('bindHXUrl','http://api.zsg.99yuncang.com/login/bind_third2'); //会销绑定账号
     $app->config('b2c_id', [
         'pbs' => 3329
     ]);
@@ -225,6 +226,8 @@ if ($app->kv->connect($app->Sneaker->cfg_kv['host'], $app->Sneaker->cfg_kv['port
 } else {
     die('Redis Connect Failed!');
 }
+
+$app->kv->select(1);
 
 /**
  * common config
