@@ -28,7 +28,7 @@
  * @apiParam {int} total *商品数量
  * @apiParam {int} unit_price *商品单价
  *
- * @apiSuccess {array} ne_goods 不一致的商品ID列表 
+ * @apiSuccess {array} ne_goods 不一致的商品ID列表
  * @apiSuccess {array} ne_price 不一致的价格列表
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -65,7 +65,7 @@
  * @apiParam {int} total *商品数量
  * @apiParam {int} unit_price *商品单价
  *
- * @apiSuccess {string} id 出库单号 
+ * @apiSuccess {string} id 出库单号
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
@@ -250,9 +250,9 @@
  * @apiSuccess {string} runame 复核员姓名
  * @apiSuccess {string} name_do 经办人名字
  * @apiSuccess {string} amount 入库单总金额
- * @apiSuccess {string} in_cname 客户名称 
- * @apiSuccess {int} in_cid 客户公司名称 
- * @apiSuccess {int} in_sid 客户仓库名称 
+ * @apiSuccess {string} in_cname 客户名称
+ * @apiSuccess {int} in_cid 客户公司名称
+ * @apiSuccess {int} in_sid 客户仓库名称
  * @apiSuccess {json} goods_list 商品清单
  * @apiSuccess {json} - goods_list详细列表
  * @apiSuccess {int} id 商品清单ID
@@ -319,7 +319,8 @@
  *
  */
 
-function stock_out($action, $id = Null){
+function stock_out($action, $id = Null)
+{
     init_menu_and_module_name(__FUNCTION__); //初始化当前操作的菜单和模块名
     $app = \Slim\Slim::getInstance();
     $my_model = new StockOut($id);
@@ -328,7 +329,7 @@ function stock_out($action, $id = Null){
     $data = $app->params;
     $cid = $app->Sneaker->cid;
     $bill_type = 1;
-    switch($action){
+    switch ($action) {
 //        case 'precreate':
 //            init_log_oper($action, '预生成出库单');
 //            param_need($data, ['order_id','out_sid','goods_list']);
@@ -378,13 +379,13 @@ function stock_out($action, $id = Null){
 
         case 'update':
             init_log_oper($action, '修改出库单');
-            if(!is_numeric($id)){
+            if (!is_numeric($id)) {
                 error(1100);
             }
 
             //读取出库单中的信息，判断是否属于本商家，判断类型，并且判断状态是否未审核
             $res = $my_model->my_power($id, 0, $bill_type, 0);
-            if($res['status'] == 4){
+            if ($res['status'] == 4) {
                 unset($data['goods_list']);
             }
 
@@ -392,50 +393,49 @@ function stock_out($action, $id = Null){
             Power::set_oper($data);
             unset($data['status']);
 
-            if(get_value($data, 'suid')){
+            if (get_value($data, 'suid')) {
                 $data['suname'] = $my_model->get_name_by_id('o_user', $data['suid']);
             }
-            $my_model -> my_update($data);
+            $my_model->my_update($data);
             success();
             break;
 
         case 'read':
-            if(isset($id)){
+            if (isset($id)) {
                 //init_log_oper($action, '读取出库单详情');
-                if(!is_numeric($id)){
+                if (!is_numeric($id)) {
                     error(1100);
                 }
 
                 //读取出库单中的信息，判断是否属于本商家，判断类型，并且判断状态是否未审核
                 $my_model->my_power($id, 0, 0);
 
-                $res = $my_model -> my_read();
+                $res = $my_model->my_read();
 
                 success($res[0]);
-            }
-            else{
+            } else {
                 //init_log_oper($action, '读取出库单列表');
-                param_check($data, ['page' => "/^\d+$/",'page_num' => "/^\d+$/"]);
+                param_check($data, ['page' => "/^\d+$/", 'page_num' => "/^\d+$/"]);
 
                 //默认加上公司内的单据条件
                 Power::set_my_sids($data);
 
-                $gid =get_value($data, 'gid');
-                if($gid){
+                $gid = get_value($data, 'gid');
+                if ($gid) {
                     $data['gids[~]'] = "%$gid%";
                 }
 
                 $settle_begin_date = get_value($data, 'settle_begin_date');
-                if($settle_begin_date){
-                    $data['settletime[>=]'] = $settle_begin_date. ' 00:00:00';
+                if ($settle_begin_date) {
+                    $data['settletime[>=]'] = $settle_begin_date . ' 00:00:00';
                 }
                 $settle_end_date = get_value($data, 'settle_end_date');
-                if($settle_end_date){
-                    $data['settletime[<=]'] = $settle_end_date. '23:59:59';
+                if ($settle_end_date) {
+                    $data['settletime[<=]'] = $settle_end_date . '23:59:59';
                 }
 
                 $data['type'] = $bill_type;
-                $res = $my_model -> read_list($data);
+                $res = $my_model->read_list($data);
 
 //                if($res['count']){
 //                    $in_cid_list = [];
@@ -448,14 +448,14 @@ function stock_out($action, $id = Null){
 //
 //                }
 
-                if($res['count']){
+                if ($res['count']) {
                     $res['data'] = Change::go($res['data'], 'sorting_id', 'duid', 'b_sorting', 'duid');
                     $res['data'] = Change::go($res['data'], 'sorting_id', 'duname', 'b_sorting', 'duname');
                     $res['data'] = Change::go($res['data'], 'duid', 'dphone', 'o_user', 'phone');
 
-                    foreach($res['data'] as $key=>$val){
+                    foreach ($res['data'] as $key => $val) {
                         $res['data'][$key]['delay_days'] = '';
-                        if(!$val['settle_status'] && $val['lastdate'] && $val['lastdate']<=date('Y-m-d')){
+                        if (!$val['settle_status'] && $val['lastdate'] && $val['lastdate'] <= date('Y-m-d')) {
                             $res['data'][$key]['delay_days'] = days_sub(date('Y-m-d'), $val['lastdate']);
                         }
                     }
@@ -471,17 +471,16 @@ function stock_out($action, $id = Null){
             Power::set_oper($data, 'puid', 'puname');
             $data['status'] = 2;
 
-            if(isset($id)){
+            if (isset($id)) {
                 //修改后审核
                 //读取出库单中的信息，判断是否属于本商家，判断类型，并且判断状态是否未审核
                 $my_model->my_power($id, 1, $bill_type);
-                $my_model -> my_precheck($data, 'update');
-            }
-            else{
+                $my_model->my_precheck($data, 'update');
+            } else {
                 $order_id = get_value($data, 'order_id');
-                if($order_id){
+                if ($order_id) {
                     //保存并审核
-                    param_need($data, ['order_id','out_sid','suid','goods_list']);
+                    param_need($data, ['order_id', 'out_sid', 'suid', 'goods_list']);
                     param_check($data, ['order_id,out_sid,suid' => "/^\d+$/"]);
 
                     //读取订单中的信息，判断该订单是否属于本商家，判断订单类型，并且判断订单状态是否已审核或已发货
@@ -495,32 +494,31 @@ function stock_out($action, $id = Null){
                     $data['cname'] = $order['out_cname'];
                     $data['in_cid'] = $order['in_cid'];
                     $data['in_cname'] = $order['in_cname'];
-
+                    $data['express'] = get_value($data, 'express', 0);
                     $data['mall_orderno'] = $order['mall_orderno'];
                     $data['receipt'] = $order['receipt'];
                     $data['contacts'] = $order['contacts'];
                     $data['phone'] = $order['phone'];
                     $data['rank'] = $order['rank'];
 
-                    if(get_value($data, 'agree_discount', 0)){
+                    if (get_value($data, 'agree_discount', 0)) {
                         $data['discount_amount'] = $order['discount_amount'];
                     }
 
                     //通知商城订单状态
-                    if($order['mall_orderno']){
-                        $msg = "操作员：". $data['puname'];
+                    if ($order['mall_orderno']) {
+                        $msg = "操作员：" . $data['puname'];
                         $mall_model->notice_order($order['mall_orderno'], 4, $msg);
                     }
 
-                }
-                else{
-                    param_need($data, ['in_cid','out_sid','suid','goods_list']);
+                } else {
+                    param_need($data, ['in_cid', 'out_sid', 'suid', 'goods_list']);
                     param_check($data, ['out_sid,suid' => "/^\d+$/"]);
 
                     //查看用户是否有订单中出库仓库的权限
                     Power::check_my_sid($data['out_sid']);
 
-                    if($data['in_cid'] != -1){
+                    if ($data['in_cid'] != -1) {
                         $data['in_cname'] = $my_model->get_name_by_id('o_company', $data['in_cid']);
                     }
 
@@ -537,7 +535,7 @@ function stock_out($action, $id = Null){
                 $data['status'] = 2;
 
                 Power::set_oper($data);
-                $id = $my_model -> my_create($data);
+                $id = $my_model->my_create($data);
             }
             success(['id' => $id]);
             break;
@@ -548,35 +546,34 @@ function stock_out($action, $id = Null){
             $period = 0;
             $mall_orderno = False;
             $order_split_status = 1;
-            if(isset($id)){
+            if (isset($id)) {
                 //修改后审核
                 //读取出库单中的信息，判断是否属于本商家，判断类型，并且判断状态是否未审核
-                $res = $my_model->my_power($id, [2,3], $bill_type);
+                $res = $my_model->my_power($id, [2, 3], $bill_type);
 
                 $data['discount_amount'] = $res['discount_amount'];
 
-                if($res['in_cid']){
+                if ($res['in_cid']) {
                     //增加最终结算日，当前时间加上账期
                     $c_model = new Customer();
                     $res2 = $c_model->read_one([
                         'cid' => $cid,
                         'ccid' => $res['in_cid']
                     ]);
-                    if($res2){
+                    if ($res2) {
                         $period = $res2['period'];
                     }
                 }
-                $data['lastdate'] = date('Y-m-d', time()+24*3600*$period);
+                $data['lastdate'] = date('Y-m-d', time() + 24 * 3600 * $period);
 
-                if(get_value($data, 'suid')){
+                if (get_value($data, 'suid')) {
                     $data['suname'] = $my_model->get_name_by_id('o_user', $data['suid']);
                 }
 
-                if(get_value($data, 'out_sid')){
+                if (get_value($data, 'out_sid')) {
                     $data['sid'] = $data['out_sid'];
                     $data['sname'] = $my_model->get_name_by_id('o_store', $data['out_sid']);
-                }
-                else{
+                } else {
                     $data['out_sid'] = $res['sid'];
                 }
 
@@ -585,13 +582,12 @@ function stock_out($action, $id = Null){
                 $order_split_status = $o_res[0]['split_status'];
                 $order_id = $res['order_id'];
                 $status = $my_model->my_check($data, 'update');
-            }
-            else{
+            } else {
                 $order_id = get_value($data, 'order_id');
 
-                if($order_id){
+                if ($order_id) {
                     //保存并审核
-                    param_need($data, ['order_id','out_sid','suid','goods_list']);
+                    param_need($data, ['order_id', 'out_sid', 'suid', 'goods_list']);
                     param_check($data, ['order_id,out_sid,suid' => "/^\d+$/"]);
 
                     //读取订单中的信息，判断该订单是否属于本商家，判断订单类型，并且判断订单状态是否已审核或已发货
@@ -616,19 +612,18 @@ function stock_out($action, $id = Null){
                     $mall_orderno = $order['mall_orderno'];
                     $order_split_status = $order['split_status'];
 
-                    if(get_value($data, 'agree_discount', 0)){
+                    if (get_value($data, 'agree_discount', 0)) {
                         $data['discount_amount'] = $order['discount_amount'];
                     }
 
-                }
-                else{
-                    param_need($data, ['in_cid','out_sid','suid','goods_list']);
+                } else {
+                    param_need($data, ['in_cid', 'out_sid', 'suid', 'goods_list']);
                     param_check($data, ['out_sid,suid' => "/^\d+$/"]);
 
                     //查看用户是否有订单中出库仓库的权限
                     Power::check_my_sid($data['out_sid']);
 
-                    if($data['in_cid'] != -1){
+                    if ($data['in_cid'] != -1) {
                         $data['in_cname'] = $my_model->get_name_by_id('o_company', $data['in_cid']);
                     }
 
@@ -647,38 +642,37 @@ function stock_out($action, $id = Null){
                 $data['type'] = $bill_type;
                 Power::set_oper($data);
 
-                if($in_cid && $in_cid != -1){
+                if ($in_cid && $in_cid != -1) {
                     //增加最终结算日，当前时间加上账期
                     $c_model = new Customer();
                     $res2 = $c_model->read_one([
                         'cid' => $cid,
                         'ccid' => $in_cid
                     ]);
-                    if($res2){
+                    if ($res2) {
                         $period = $res2['period'];
                     }
                 }
-                $data['lastdate'] = date('Y-m-d', time()+24*3600*$period);
+                $data['lastdate'] = date('Y-m-d', time() + 24 * 3600 * $period);
 
-                $status = $my_model -> my_check($data, 'create');
+                $status = $my_model->my_check($data, 'create');
             }
 
             $stock_out_id = $my_model->get_id();
 
             //通知商城订单状态
-            if($mall_orderno){
-                $msg = "审核员：". $data['cuname'];
-                if($status == 3){
+            if ($mall_orderno) {
+                $msg = "审核员：" . $data['cuname'];
+                if ($status == 3) {
                     $mall_status = 13;
-                }
-                elseif($status == 4){
+                } elseif ($status == 4) {
                     $mall_status = 5;
                     //如果是拆单，要多附加商品信息
-                    if($order_split_status == 2){
+                    if ($order_split_status == 2) {
                         $goods_msg = "<br>拆单发货商品：";
-                        $split_goods_list = $app->db->select('b_stock_out_glist','*',['stock_out_id'=>$stock_out_id]);
-                        foreach($split_goods_list as $val){
-                            $goods_msg .= "<br>".$val['gname']." ×". $val['total'];
+                        $split_goods_list = $app->db->select('b_stock_out_glist', '*', ['stock_out_id' => $stock_out_id]);
+                        foreach ($split_goods_list as $val) {
+                            $goods_msg .= "<br>" . $val['gname'] . " ×" . $val['total'];
                         }
                         //$goods_msg = rtrim($goods_msg, ',');
                         $msg .= $goods_msg;
@@ -689,34 +683,33 @@ function stock_out($action, $id = Null){
             }
 
             success([
-                'id'=>$stock_out_id,
+                'id' => $stock_out_id,
                 'status' => $status
             ]);
             break;
 
         case 'delete':
             init_log_oper($action, '取消出库单');
-            if(!is_numeric($id)){
+            if (!is_numeric($id)) {
                 error(1100);
             }
             $res = $my_model->my_power($id, 0, $bill_type);
-            if(!in_array($res['status'], [1, 2, 3])){
+            if (!in_array($res['status'], [1, 2, 3])) {
                 error(3123);
             }
-            if($res['settle_status'] == 1){
+            if ($res['settle_status'] == 1) {
                 error(3127);
             }
 
-            $my_model -> my_delete();
+            $my_model->my_delete();
 
             //通知商城订单状态
-            if($res['order_id']){
+            if ($res['order_id']) {
                 $o_res = $o_model->read_by_id($res['order_id']);
-                if($o_res && $o_res[0]['mall_orderno']){
-                    if($app->Sneaker->uname){
-                        $msg = "操作员：". $app->Sneaker->uname;
-                    }
-                    else{
+                if ($o_res && $o_res[0]['mall_orderno']) {
+                    if ($app->Sneaker->uname) {
+                        $msg = "操作员：" . $app->Sneaker->uname;
+                    } else {
                         $msg = "";
                     }
                     $mall_model->notice_order($o_res[0]['mall_orderno'], 8, $msg);
@@ -728,22 +721,21 @@ function stock_out($action, $id = Null){
         case 'flush':
             //冲正单据
             init_log_oper($action, '冲正出库单');
-            if(!is_numeric($id)){
+            if (!is_numeric($id)) {
                 error(1100);
             }
 
             //读取出库单中的信息，判断是否属于本商家，判断类型，并且判断状态是否未审核
             $res = $my_model->my_power($id, 4, 0, 0);
-            $my_model -> my_flush();
+            $my_model->my_flush();
 
             //通知商城订单状态
-            if($res['order_id']){
+            if ($res['order_id']) {
                 $o_res = $o_model->read_by_id($res['order_id']);
-                if($o_res && $o_res[0]['mall_orderno']){
-                    if($app->Sneaker->uname){
-                        $msg = "操作员：". $app->Sneaker->uname;
-                    }
-                    else{
+                if ($o_res && $o_res[0]['mall_orderno']) {
+                    if ($app->Sneaker->uname) {
+                        $msg = "操作员：" . $app->Sneaker->uname;
+                    } else {
                         $msg = "";
                     }
                     $mall_model->notice_order($o_res[0]['mall_orderno'], 8, $msg);
@@ -756,15 +748,15 @@ function stock_out($action, $id = Null){
         case 'repaire':
             //修正单据
             init_log_oper($action, '修正出库单');
-            if(!is_numeric($id)){
+            if (!is_numeric($id)) {
                 error(1100);
             }
 
-            param_need($data, ['goods_list','out_sid']);
+            param_need($data, ['goods_list', 'out_sid']);
 
             //读取出库单中的信息，判断是否属于本商家，判断类型，并且判断状态是否未审核
             $my_model->my_power($id, 4, 0, 0);
-            $my_model -> my_repaire($data);
+            $my_model->my_repaire($data);
             success([
                 'id' => $my_model->get_id()
             ]);

@@ -134,7 +134,7 @@ do {
         $order_data['discount_amount'] = $order_data['favorable'];
         $order_data['in_cname'] = $my_model->get_name_by_id('o_company', $order_data['in_cid']);
         $order_data['out_cname'] = $my_model->get_name_by_id('o_company', $order_data['out_cid']);
-
+        $order_data['express']=$order_data['express'];
         $order_data['checktime'] = date('Y-m-d H:i:s');
         $order_data['status'] = 2;
         $order_data['type'] = 1; //采购订单
