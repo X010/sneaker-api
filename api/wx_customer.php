@@ -164,7 +164,7 @@ function wx_customer($action, $id = Null)
             $app->db2->update('db_addressee', ['def' => 0], ['cid' => $cid]);
             $res = $app->db2->update('db_addressee', ['def' => 1], ['AND' => ['id' => $id, 'cid' => $cid]]);
             if ($res) {
-                respCustomer(null);
+                respCustomer($cid);
             } else {
                 error();
             }
