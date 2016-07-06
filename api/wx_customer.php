@@ -160,10 +160,11 @@ function wx_customer($action, $id = Null)
             //设置默认地址  将其他设置为非默认地址 page: 我的收货地址 设为默认
             param_need($data, ['id']); //必填
             $id = get_value($data, 'id');
+            start_action();
             $app->db2->update('db_addressee', ['def' => 0], ['cid' => $cid]);
             $res = $app->db2->update('db_addressee', ['def' => 1], ['AND' => ['id' => $id, 'cid' => $cid]]);
             if ($res) {
-                respCustomer($cid);
+                respCustomer($data);
             } else {
                 error();
             }
