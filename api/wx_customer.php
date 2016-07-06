@@ -174,7 +174,7 @@ function wx_customer($action, $id = Null)
             $address = [];
             $fields = ['id', 'contacts', 'phone', 'province', 'city', 'county', 'street'];
             $address_arr = $app->db2->select('db_addressee', $fields, ['AND' => ['cid' => $cid, 'status' => 1, 'def' => 1], 'LIMIT' => 1]);
-            if ($address_arr) {
+            if (!$address_arr) {
                 $address_arr = $app->db2->select('db_addressee', $fields, ['AND' => ['cid' => $cid, 'status' => 1, 'LIMIT' => 1]]);
             }
             if ($address_arr) {
