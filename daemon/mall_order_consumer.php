@@ -218,7 +218,7 @@ do {
                     $data['receipt'] = $order_data['receipt'];
                     $data['contacts'] = $order_data['contacts'];
                     $data['phone'] = $order_data['phone'];
-
+                    $data['express'] = $order_data['express'];
                     $in_cid = get_value($order_data, 'in_cid');
                     $mall_orderno = $order_data['mall_orderno'];
                     $data['sid'] = $order_data['out_sid'];
