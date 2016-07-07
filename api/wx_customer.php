@@ -1326,7 +1326,7 @@ function wx_customer($action, $id = Null)
             //第一步根据供应商ID获取供应商的优惠活动
             $current_time = date('Y-m-d H:i:s');
             $coupon_list = $app->db2->select('db_coupon', '*', ["AND" =>
-                ['company_id' => $scid, 'coupon_status[!]' => 9, 'coupon_send_start[<=]' => $current_time, 'coupon_send_end[>=]' => $current_time],
+                ['company_id' => $scid, 'coupon_status[!]' => 9,'coupon_type'=>2, 'coupon_send_start[<=]' => $current_time, 'coupon_send_end[>=]' => $current_time],
                 'ORDER' => ['coupon_send_start']
             ]);
             //获取满足条件第一个优惠劵规则
