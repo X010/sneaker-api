@@ -42,6 +42,16 @@ function wx_coupon($action, $id = Null)
             respCustomer($res);
             break;
 
+        case 'order_coupon':
+            //获取本次订单可以使用的红包
+            $res=[];
+            $order_item = get_value($data, 'items');
+            $order_total_money = get_value($data, 'order_total_money');
+            if ($order_item && $order_total_money) {
+
+            }
+            respCustomer($res);
+            break;
         case 'check':
             $res = [];
             param_need($data, ['couid']);

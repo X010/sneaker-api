@@ -1321,7 +1321,7 @@ function wx_customer($action, $id = Null)
                 'action' => '创建订单',
             ];
             $app->db2->insert('db_order_oper', $oper);
-
+            /*
             //根据规则赠送优惠劵
             //第一步根据供应商ID获取供应商的优惠活动
             $current_time = date('Y-m-d H:i:s');
@@ -1387,7 +1387,7 @@ function wx_customer($action, $id = Null)
                     }
                 }
 
-            }
+            }*/
 
             if ($insert_id) {
                 respCustomer($order['super_order_id']);
