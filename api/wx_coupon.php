@@ -44,11 +44,56 @@ function wx_coupon($action, $id = Null)
 
         case 'order_coupon':
             //获取本次订单可以使用的红包
-            $res=[];
+            $res = array();
             $order_item = get_value($data, 'items');
             $order_total_money = get_value($data, 'order_total_money');
-            if ($order_item && $order_total_money) {
-
+            $ccid = get_value($data, 'ccid');
+            if ($order_item && $order_total_money && $ccid) {
+                $ccid_coupon = $app->db2->select("db_coupon_detail", "*", ["AND" => ["ccid" => $ccid, 'status' => 3]]);
+                if ($ccid_coupon) {
+                    $current_time = date('Y-m-d H:i:s');
+                    foreach ($ccid_coupon as $single_coupon) {
+                        if ($single_coupon['coupon_use_start'] <= $current_time && $current_time <= $single_coupon['coupon_use_end']) {
+                            if ($single_coupon['coupon_type'] == 1) {
+                                array_push($res, $single_coupon);//按用户发送,直接可以使用
+                            } else if ($single_coupon['coupon_type'] == 2) {
+                                if ($single_coupon['coupon_small_money'] <= $order_total_money) {
+                                    array_push($res, $single_coupon); //判断订单金额
+                                }
+                            } else if ($single_coupon['coupon_type' == 3]) {
+                                $order_item_data = json_decode($order_item, true);
+                                $order_item_migs = array();
+                                if ($order_item_data) {
+                                    foreach ($order_item_data as $oid) {
+                                        array_push($order_item_migs, (int)$oid['id']);
+                                    }
+                                    //需要判断商品的归属
+                                    $good_str = $single_coupon['merchandise'];
+                                    if ($good_str) {
+                                        $migs_ids = explode(',', $good_str);
+                                        if ($migs_ids) {
+                                            $res_p = true;
+                                            foreach ($migs_ids as $mid) {
+                                                if ($mid && $mid != "" && !empty($mid)) {
+                                                    $imid = (int)$mid;
+                                                    if (!in_array($imid, $order_item_migs)) {
+                                                        $res_p = false;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                            if ($res_p) {
+                                                array_push($res, $single_coupon); //判断订单金额
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        } else {
+                            $app->db2->update("db_coupon_detail", ["status" => 8], ["id" => $single_coupon['id']]);
+                        }
+                    }
+                }
             }
             respCustomer($res);
             break;
