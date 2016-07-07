@@ -60,7 +60,7 @@ function wx_coupon($action, $id = Null)
                                 if ($single_coupon['coupon_small_money'] <= $order_total_money) {
                                     array_push($res, $single_coupon); //判断订单金额
                                 }
-                            } else if ($single_coupon['coupon_type' == 3]) {
+                            } else if ($single_coupon['coupon_type'] == 3) {
                                 $order_item_data = json_decode($order_item, true);
                                 $order_item_migs = array();
                                 if ($order_item_data) {
