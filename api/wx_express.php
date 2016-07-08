@@ -76,7 +76,7 @@ function wx_express($action, $id = Null)
             $ccid = get_value($data, 'ccid');
             $res = [];
             if ($scid && $ccid) {
-                $res = $app->db->select("r_customer", "*", ["AND" => ["cid" => scid, "ccid" => $ccid]]);
+                $res = $app->db->select("r_customer", "*", ["AND" => ["cid" => $scid, "ccid" => $ccid]]);
             }
             respCustomer($res);
             break;
