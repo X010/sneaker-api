@@ -164,7 +164,7 @@ function wx_customer($action, $id = Null)
             $app->db2->update('db_addressee', ['def' => 0], ['cid' => $cid]);
             $res = $app->db2->update('db_addressee', ['def' => 1], ['AND' => ['id' => $id, 'cid' => $cid]]);
             if ($res) {
-                respCustomer(null);
+                respCustomer($data);
             } else {
                 error();
             }
@@ -912,7 +912,7 @@ function wx_customer($action, $id = Null)
             //读取订单信息根据订单ID page: 订单 - 订单详情
             param_need($data, ['id']);
             $id = get_value($data, 'id');
-            $fields_order = ['id', 'erp_order_id', 'order_id', 'create_time', 'supplier_company_name', 'delivery', 'pt', 'ispay', 'status', 'total_amount', 'contacts', 'phone', 'receipt', 'cid', 'scid','express_money'];
+            $fields_order = ['id', 'erp_order_id', 'order_id', 'create_time', 'supplier_company_name', 'delivery', 'pt', 'ispay', 'status', 'total_amount', 'contacts', 'phone', 'receipt', 'cid', 'scid', 'express_money'];
             $order = $app->db2->get('db_order', $fields_order, ['id' => $id]);
             if (!$order) {
                 respCustomer([], 0);
@@ -1120,6 +1120,7 @@ function wx_customer($action, $id = Null)
             $addresseeId = get_value($data, 'addresseeId', 0); //收货地址
             $delivery = get_value($data, 'delivery', "0"); //发货方式
             $favorable = get_value($data, 'favorable', 0); //优惠金额
+            $isuserexpress = get_value($data, 'use_express_money', 0);
             $memo = get_value($data, 'memo', ''); //备注
             $orderItem = get_value($data, 'orderItem');
             $order_item_list = json_decode($orderItem, true);
@@ -1310,8 +1311,24 @@ function wx_customer($action, $id = Null)
             }
 
             unset($order['items']);
-            $order['express_money'] = $res['express_price'];
-            $order['total_amount']=$order['express_money']+ $order['total_amount'];//加上物流费用
+            //判断是否使用物流费用
+            if ($isuserexpress > 0) {
+                $customer_express = $app->db->select('r_customer', '*', ['AND' => ['cid' => $scid, 'ccid' => $ccid]])[0];
+                if ($customer_express) {
+                    $last_vip_logistics = 0;
+                    if ($customer_express['vip_logistics'] >= $res['express_price'] * 100) {
+                        $last_vip_logistics = $customer_express['vip_logistics'] - $res['express_price'] * 100;
+                        $order['express_money'] = 0;
+                    } else {
+                        $order['express_money'] = ($res['express_price'] * 100 - $customer_express['vip_logistics']) / 100;
+                    }
+                    //更新该会员物流余额
+                    $app->db->update('r_customer', ['vip_logistics' => $last_vip_logistics], ['AND' => ['cid' => $scid, 'ccid' => $ccid]]);
+                }
+            } else {
+                $order['express_money'] = $res['express_price'];
+            }
+            $order['total_amount'] = $order['express_money'] + $order['total_amount'];//加上物流费用
             $insert_id = $app->db2->insert('db_order', $order);
             $oper = [
                 'order_no' => $order_id,
@@ -1321,12 +1338,12 @@ function wx_customer($action, $id = Null)
                 'action' => '创建订单',
             ];
             $app->db2->insert('db_order_oper', $oper);
-
+            /*
             //根据规则赠送优惠劵
             //第一步根据供应商ID获取供应商的优惠活动
             $current_time = date('Y-m-d H:i:s');
             $coupon_list = $app->db2->select('db_coupon', '*', ["AND" =>
-                ['company_id' => $scid, 'coupon_status[!]' => 9, 'coupon_send_start[<=]' => $current_time, 'coupon_send_end[>=]' => $current_time],
+                ['company_id' => $scid, 'coupon_status[!]' => 9,'coupon_type'=>2, 'coupon_send_start[<=]' => $current_time, 'coupon_send_end[>=]' => $current_time],
                 'ORDER' => ['coupon_send_start']
             ]);
             //获取满足条件第一个优惠劵规则
@@ -1387,7 +1404,7 @@ function wx_customer($action, $id = Null)
                     }
                 }
 
-            }
+            }*/
 
             if ($insert_id) {
                 respCustomer($order['super_order_id']);

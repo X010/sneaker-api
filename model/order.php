@@ -19,7 +19,7 @@ class Order extends Bill{
         'out_sname', '*type', 'amount', 'uid','uname', 'cuid', 'cuname', 'ouid', 'ouname', 'iuid', 'iuname', 'buid',
         'buname', 'suid', 'suname', 'rank', 'status','memo', 'tax_amount', 'checktime', 'mall_orderno','receipt',
         'contacts','phone','pay_type','ispaid','auto_delete_date','hash', 'business', 'visit_memo','discount_amount',
-        'small_amount','gids','box_total','split_status','visit_status','box_total2','from'];
+        'small_amount','gids','box_total','split_status','visit_status','box_total2','from','express'];
 
     /**
      * 数据库字段（只允许以下字段写入）

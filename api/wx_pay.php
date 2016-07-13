@@ -601,6 +601,7 @@ function convertErpOrder($order)
         'receipt' => $order['receipt'],
         'delivery' => $order['delivery'],
         'platform' => $order['platform'],
+        'express'=>$order['express_money'],
         'ispaid' => 1,
         'pay_type' => 1,
         'uid' => $order['uid'],
@@ -658,7 +659,7 @@ function getPayConfig($scid = 0)
             'alipay' => [ //ali支付配置
             ],
         ],
-        '2346' => [ //鹏博士
+        '3329' => [ //鹏博士
             'appid' => 'wx0c1c76cdc174a36a',
             'appsecret' => '3c7a506ef261b18c23e8a698e731a947',
             'platform' => 1032,

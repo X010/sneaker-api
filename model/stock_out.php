@@ -20,7 +20,7 @@ class StockOut extends Bill{
         'settle_id','in_cid','in_cname','tax_amount','checktime','settletime','lastdate','cost_amount','pay_type',
         'hash','sorting_id','car_license','business','mall_orderno','receipt','contacts','phone','settle_status',
         'discount_amount','rank','small_amount','settle_type','commission_status','commission_id','gids','box_total',
-        'box_total2'];
+        'box_total2','express'];
     
     //搜索字段自动匹配
     protected $search_data = ['id','order_id'];
