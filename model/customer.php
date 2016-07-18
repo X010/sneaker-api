@@ -968,9 +968,11 @@ class Customer extends Object{
     public function change_vip($product_id, $cid, $platform){
         $vip_config = $this->app->config('vip_product');
         $price = 0;
+        $logistics = 0;
         foreach($vip_config as $key=>$val){
             if($val['product_id'] == $product_id){
                 $price = $val['price'];
+                $logistics = $val['logistics'];
                 break;
             }
         }
@@ -1007,6 +1009,7 @@ class Customer extends Object{
 
         $data['daily_reduce'] = $daily_reduce;
         $data['vip_end_date'] = $vip_end_date;
+        $data['vip_logistics[+]'] = $logistics;
         $data['cctype'] = $product_type;
         $this->update($data,[
             'AND'=>[
