@@ -1064,8 +1064,8 @@ class Customer extends Object{
             $vip_end_date = days_add($c_res['vip_end_date'], $product_days);
             $db_data['daily_reduce'] = $daily_reduce;
             $db_data['vip_end_date'] = $vip_end_date;
-            $db_data['vip_balance[+]'] = $price;
-            $db_data['vip_logistics[+]'] = $logistics;
+            $db_data['vip_balance'] =$c_res['vip_balance']+$price;
+            $db_data['vip_logistics'] =$c_res['vip_logistics']+$logistics;
         }
         else{
             $daily_reduce = round($price/$product_days-0.005, 2);
@@ -1074,7 +1074,7 @@ class Customer extends Object{
             $db_data['vip_end_date'] = $vip_end_date;
             $db_data['cctype'] = $product_type;
             $db_data['vip_balance'] = $price;
-            $db_data['vip_logistics[+]'] = $logistics;
+            $db_data['vip_logistics[+]'] = $c_res['vip_logistics']+$logistics;
         }
 
         $this->update($db_data,[
