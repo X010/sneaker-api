@@ -1009,7 +1009,7 @@ class Customer extends Object{
 
         $data['daily_reduce'] = $daily_reduce;
         $data['vip_end_date'] = $vip_end_date;
-        $data['vip_logistics'] =3000;
+        $data['vip_logistics'] =$c_res['vip_logistics']+$logistics;
         $data['cctype'] = $product_type;
 
 
