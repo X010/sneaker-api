@@ -1009,7 +1009,7 @@ class Customer extends Object{
 
         $data['daily_reduce'] = $daily_reduce;
         $data['vip_end_date'] = $vip_end_date;
-        $data['vip_logistics[+]'] = 100;
+        $data['vip_logistics'] = $data['vip_logistics']+$logistics;
         $data['cctype'] = $product_type;
         $this->update($data,[
             'AND'=>[
