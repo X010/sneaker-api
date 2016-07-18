@@ -1074,7 +1074,7 @@ class Customer extends Object{
             $db_data['vip_end_date'] = $vip_end_date;
             $db_data['cctype'] = $product_type;
             $db_data['vip_balance'] = $price;
-            $db_data['vip_logistics[+]'] = $c_res['vip_logistics']+$logistics;
+            $db_data['vip_logistics'] = $c_res['vip_logistics']+$logistics;
         }
 
         $this->update($db_data,[
