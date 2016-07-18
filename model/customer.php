@@ -1011,6 +1011,8 @@ class Customer extends Object{
         $data['vip_end_date'] = $vip_end_date;
         $data['vip_logistics[+]'] =$logistics;
         $data['cctype'] = $product_type;
+
+        var_dump($data);
         $this->update($data,[
             'AND'=>[
                 'cid'=>$scid,
