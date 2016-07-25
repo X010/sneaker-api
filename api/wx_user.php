@@ -22,7 +22,9 @@ function wx_user($action, $id = Null){
     		$data = [];
     		$mall = $app->db2->get('db_mall',['name','intro','logo'],['state'=>$state]);
     		if ($mall) {
-                $mall['logo'] = 'http://photo.ms9d.com/og/ord_3903328385.png';
+                if(!$mall['logo']) {
+                    $mall['logo'] = 'http://photo.ms9d.com/og/ord_3903328385.png';
+                }
     			$data = $mall;
     		}
     		respCustomer($data);
