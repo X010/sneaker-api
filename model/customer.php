@@ -968,9 +968,11 @@ class Customer extends Object{
     public function change_vip($product_id, $cid, $platform){
         $vip_config = $this->app->config('vip_product');
         $price = 0;
+        $logistics = 0;
         foreach($vip_config as $key=>$val){
             if($val['product_id'] == $product_id){
                 $price = $val['price'];
+                $logistics = $val['logistics'];
                 break;
             }
         }
@@ -1007,7 +1009,10 @@ class Customer extends Object{
 
         $data['daily_reduce'] = $daily_reduce;
         $data['vip_end_date'] = $vip_end_date;
+        $data['vip_logistics'] =$c_res['vip_logistics']+$logistics;
         $data['cctype'] = $product_type;
+
+
         $this->update($data,[
             'AND'=>[
                 'cid'=>$scid,
@@ -1059,8 +1064,8 @@ class Customer extends Object{
             $vip_end_date = days_add($c_res['vip_end_date'], $product_days);
             $db_data['daily_reduce'] = $daily_reduce;
             $db_data['vip_end_date'] = $vip_end_date;
-            $db_data['vip_balance[+]'] = $price;
-            $db_data['vip_logistics[+]'] = $logistics;
+            $db_data['vip_balance'] =$c_res['vip_balance']+$price;
+            $db_data['vip_logistics'] =$c_res['vip_logistics']+$logistics;
         }
         else{
             $daily_reduce = round($price/$product_days-0.005, 2);
@@ -1069,7 +1074,7 @@ class Customer extends Object{
             $db_data['vip_end_date'] = $vip_end_date;
             $db_data['cctype'] = $product_type;
             $db_data['vip_balance'] = $price;
-            $db_data['vip_logistics'] = $logistics;
+            $db_data['vip_logistics'] = $c_res['vip_logistics']+$logistics;
         }
 
         $this->update($db_data,[
