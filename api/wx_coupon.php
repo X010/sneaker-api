@@ -112,7 +112,34 @@ function wx_coupon($action, $id = Null)
             }
             respCustomer($res, 0, 404, "coupon no found");
             break;
+        case 'active_card':
+            $res = [];
+            $card_no = get_value($data, 'card_no');
+            $ccid = get_value($data, 'ccid');
+            $scid = get_value($data, 'scid');
+            if ($card_no) {
+                $coupon_id=get_coupon_id($card_no);
+
+            }
+            respCustomer($res);
+            break;
     }
 
 
 }
+
+/**
+ * 获取红包ID
+ * @param $card_no
+ */
+function get_coupon_id($card_no)
+{
+    $coupon_id = "";
+    for ($i = 0; $i < strlen($card_no); $i++) {
+        if ($card_no[$i] >= '0' && $card_no[$i] <= '9') {
+            $coupon_id=$coupon_id.$card_no[$i];
+        }
+    }
+    return (int)$coupon_id;
+}
+
