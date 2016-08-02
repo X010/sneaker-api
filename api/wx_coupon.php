@@ -115,19 +115,20 @@ function wx_coupon($action, $id = Null)
         case 'active_card':
             $res = [];
             $card_no = get_value($data, 'card_no');
-            $ccid = get_value($data, 'ccid');
+            $order_item = get_value($data, 'items');
             $scid = get_value($data, 'scid');
-            if ($card_no) {
+            if ($card_no&&$order_item) {
                 $coupon_id=get_coupon_id($card_no);
+                $order_item_data = json_decode($order_item, true);
                 if($coupon_id)
                 {
-                    $cards=$app->db2->select("db_coupon_detail","*",["AND"=>["company_id"=>$scid,"coupon_id"=>$coupon_id,"card_number"=>$card_no]])[0];
+                    $cards=$app->db2->select("db_coupon_detail","*",["AND"=>['company_id'=>$scid,'coupon_id'=>$coupon_id,'card_number'=>$card_no]])[0];
                     if($cards)
                     {
                         $res=$coupon_id;
                     }
                 }
-                $res=$coupon_id;
+                $res=-1;
             }
             respCustomer($res);
             break;
