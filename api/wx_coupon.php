@@ -120,15 +120,16 @@ function wx_coupon($action, $id = Null)
             if ($card_no&&$order_item) {
                 $coupon_id=get_coupon_id($card_no);
                 $order_item_data = json_decode($order_item, true);
-                if($coupon_id)
+                if($coupon_id>0)
                 {
                     $cards=$app->db2->select("db_coupon_detail","*",["AND"=>['company_id'=>$scid,'coupon_id'=>$coupon_id,'card_number'=>$card_no]],['LIMIT'=>1]);
                     if($cards)
                     {
-                        $res=$coupon_id;
+
                     }
+                    $res=$cards;
                 }
-                $res=-1;
+                //$res=-1;
             }
             respCustomer($res);
             break;
