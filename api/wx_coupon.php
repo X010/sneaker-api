@@ -117,15 +117,19 @@ function wx_coupon($action, $id = Null)
             $card_no = get_value($data, 'card_no');
             $order_item = get_value($data, 'gid');
             $scid = get_value($data, 'scid');
-            if ($card_no&&$order_item) {
-                $coupon_id=get_coupon_id($card_no);
+            if ($card_no && $order_item) {
+                $coupon_id = get_coupon_id($card_no);
                 $order_item_data = json_decode($order_item, true);
-                if($coupon_id>0)
-                {
-                    $cards=$app->db2->select("db_coupon_detail","*",["AND"=>['company_id'=>$scid,'coupon_id'=>$coupon_id,'card_number'=>$card_no]],['LIMIT'=>1]);
-                    if($cards)
-                    {
-                        $res=$cards;
+                if ($coupon_id > 0) {
+                    $cards = $app->db2->select("db_coupon_detail", "*", ["AND" => ['company_id' => $scid, 'coupon_id' => $coupon_id, 'card_number' => $card_no]], ['LIMIT' => 1]);
+                    if ($cards) {
+                        $goods_list = $cards['merchandise'];
+                        if ($goods_list && $order_item_data) {
+                            if (checkItemToCoupon($order_item_data, $goods_list)) {
+                                $res = $cards;
+                            }
+                        }
+
                     }
 
                 }
@@ -138,6 +142,30 @@ function wx_coupon($action, $id = Null)
 }
 
 /**
+ * 对别订单
+ * @param $order_ites_list 商品列表
+ * @param $maill_ids 红包需要购买的列表
+ */
+function checkItemToCoupon($order_item_list, $mall_id)
+{
+    if ($mall_id) {
+        $mall_flag = 0;
+        $mall_ids = split(",", $mall_id);
+        foreach ($order_item_list as $wx_order) {
+            foreach ($mall_ids as $mid) {
+                if ($wx_order['id'] == $mid) {
+                    $mall_flag++;
+                }
+            }
+        }
+        if (sizeof($mall_ids) == $mall_flag) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
  * 获取红包ID
  * @param $card_no
  */
@@ -146,7 +174,7 @@ function get_coupon_id($card_no)
     $coupon_id = "";
     for ($i = 0; $i < strlen($card_no); $i++) {
         if ($card_no[$i] >= '0' && $card_no[$i] <= '9') {
-            $coupon_id=$coupon_id.$card_no[$i];
+            $coupon_id = $coupon_id . $card_no[$i];
         }
     }
     return (int)$coupon_id;
