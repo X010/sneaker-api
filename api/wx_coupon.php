@@ -134,7 +134,7 @@ function wx_coupon($action, $id = Null)
 
                 }
             }
-            respCustomer($res);
+            respCustomer($res,0,300);
             break;
     }
 
