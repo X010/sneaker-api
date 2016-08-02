@@ -123,9 +123,9 @@ function wx_coupon($action, $id = Null)
                 $order_item_data = json_decode($order_item, true);
                 if ($coupon_id > 0) {
                     $cards = $app->db2->select("db_coupon_detail", "*", ["AND" => ['company_id' => $scid, 'coupon_id' => $coupon_id, 'card_number' => $card_no]], ['LIMIT' => 1]);
-                    $res=$cards;
-                    if ($cards&&in_array('merchandise',$cards)) {
-                        $goods_list = $cards['merchandise'];
+
+                    if ($cards&&in_array('merchandise',$cards[0])) {
+                        $goods_list = $cards[0]['merchandise'];
                         if ($goods_list && $order_item_data) {
                             if (checkItemToCoupon($order_item_data, $goods_list)) {
                                 $res = $cards;
