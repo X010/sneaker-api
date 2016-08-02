@@ -119,7 +119,15 @@ function wx_coupon($action, $id = Null)
             $scid = get_value($data, 'scid');
             if ($card_no) {
                 $coupon_id=get_coupon_id($card_no);
-
+                if($coupon_id)
+                {
+                    $cards=$app->db2->select("db_coupon_detail","*",["AND"=>["company_id"=>$scid,"coupon_id"=>$coupon_id,"card_number"=>$card_no]])[0];
+                    if($cards)
+                    {
+                        $res=$coupon_id;
+                    }
+                }
+                $res=-1;
             }
             respCustomer($res);
             break;
