@@ -129,6 +129,7 @@ function wx_coupon($action, $id = Null)
                         if ($goods_list && $order_item_data) {
                             if (checkItemToCoupon($order_item_data, $goods_list)) {
                                 $res = $cards;
+                                respCustomer($res);
                             }
                         }
 
