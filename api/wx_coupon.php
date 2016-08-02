@@ -113,7 +113,7 @@ function wx_coupon($action, $id = Null)
             respCustomer($res, 0, 404, "coupon no found");
             break;
         case 'active_card':
-            $res = [];
+            $res = -1;
             $card_no = get_value($data, 'card_no');
             $order_item = get_value($data, 'gid');
             $scid = get_value($data, 'scid');
@@ -125,11 +125,10 @@ function wx_coupon($action, $id = Null)
                     $cards=$app->db2->select("db_coupon_detail","*",["AND"=>['company_id'=>$scid,'coupon_id'=>$coupon_id,'card_number'=>$card_no]],['LIMIT'=>1]);
                     if($cards)
                     {
-
+                        $res=$cards;
                     }
-                    $res=$cards;
+
                 }
-                //$res=-1;
             }
             respCustomer($res);
             break;
