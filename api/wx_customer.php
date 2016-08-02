@@ -1126,6 +1126,7 @@ function wx_customer($action, $id = Null)
             $order_item_list = json_decode($orderItem, true);
             $company = $app->db->get('o_company', '*', ['id' => $data['ccid']]);
             $coupid_id = get_value($data, 'couid');
+            $card_list_str = get_value($data, 'card_list_str');
             if (!$company || !$order_item_list) {
                 error(7101, 'ccid');
             }
@@ -1296,6 +1297,37 @@ function wx_customer($action, $id = Null)
                                     $order['total_amount'] = 0;
                                 }
                             }
+                        }
+                    }
+                }
+
+                //减去卡密金额
+                if ($card_list_str) {
+                    $card_list_array = explode(',', $card_list_str);
+                    if ($card_list_array) {
+                        $total_card_amount = 0;
+                        foreach ($card_list_array as $card_s_no) {
+                            if ($card_s_no && strlen($card_s_no) == 12) {
+                                $coupon_detail = $app->db2->select("db_coupon_detail", "*", ["AND" => ['company_id' => $scid, 'card_number' => $card_s_no]], ['LIMIT' => 1]);
+                                if ($coupon_detail) {
+                                    $now = date('Y-m-d H:i:s');
+                                    if ($coupon_detail[0]['coupon_use_start'] <= $now && $now <= $coupon_detail[0]['coupon_use_end'] && $coupon_detail[0]['status'] == 3) {
+                                        $coupon_detail_id = $coupon_detail[0]['id'];
+                                        $updateid = $app->db2->update("db_coupon_detail", ["status" => 4, "use_time" => $now, "use_order_no" => $order["order_id"], "ccid" => $ccid], ["id" => $coupon_detail_id]);
+                                        if ($updateid) {
+                                            $total_card_amount += $coupon_detail[0]['coupon_money'];
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        if($order['total_amount']>$total_card_amount){
+                            $order['total_amount'] = $order['total_amount'] - $total_card_amount;
+                            $order['favorable'] = $order['favorable'] + $total_card_amount;
+                        }else{
+                            $order['favorable'] = $order['favorable'] + $order['total_amount'];
+                            $order['total_amount'] = 0;
                         }
                     }
                 }
