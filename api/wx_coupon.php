@@ -114,6 +114,7 @@ function wx_coupon($action, $id = Null)
             break;
         case 'active_card':
             $res = -1;
+            param_need($data, ['card_no','gid','scid']);
             $card_no = get_value($data, 'card_no');
             $order_item = get_value($data, 'gid');
             $scid = get_value($data, 'scid');
