@@ -130,6 +130,7 @@ function wx_coupon($action, $id = Null)
                             if (checkItemToCoupon($order_item_data, $goods_list)) {
                                 $res = $cards;
                                 respCustomer($res,0,200);
+                                return;
                             }
                         }
 
