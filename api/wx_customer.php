@@ -1361,6 +1361,13 @@ function wx_customer($action, $id = Null)
                 $order['express_money'] = $res['express_price'];
             }
             $order['total_amount'] = $order['express_money'] + $order['total_amount'];//加上物流费用
+
+            if($order['total_amount']==0)
+            {
+                //已经不用支付了
+                $order['ispay']=9;
+            }
+
             $insert_id = $app->db2->insert('db_order', $order);
             $oper = [
                 'order_no' => $order_id,
