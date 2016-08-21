@@ -1366,6 +1366,7 @@ function wx_customer($action, $id = Null)
             {
                 //已经不用支付了
                 $order['ispay']=9;
+                $order['pt']=1;
             }
 
             $insert_id = $app->db2->insert('db_order', $order);
